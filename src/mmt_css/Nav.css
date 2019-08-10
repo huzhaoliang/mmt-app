@@ -1,0 +1,14 @@
+nav {
+	font-size: 1.1em;
+}
+.dropdown > a {
+	color: 	#FFFFFF;
+}
+.dropdown-menu {
+	width: 7.5em;
+	color: #676767;
+	min-width: 7.5em !important;
+}
+.navbar a[href]:hover {
+	font-weight: bold;
+}
