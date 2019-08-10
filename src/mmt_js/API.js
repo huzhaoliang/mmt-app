@@ -3,7 +3,7 @@
 
 const serverip = "localhost";
 
-class MMT_API
+class API
 {
     getHotJobs()
     {
