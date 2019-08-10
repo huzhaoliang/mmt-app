@@ -1,15 +1,10 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Nav from 'react-bootstrap/Nav';
+import '../mmt_css/bootstrap.min.css';
 
-class MMT_Nav extends React.Component
+
+class MMTNav extends React.Component
 {
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         return (
@@ -41,4 +36,4 @@ class MMT_Nav extends React.Component
         
 }
 
-export default MMT_Nav;
+export default MMTNav;

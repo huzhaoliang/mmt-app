@@ -1,23 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React from 'react';
+import './mmt_css/index.css';
 import ReactDOM from 'react-dom';
-import './index.css';
-
-import MMT_Nav from './MMT_Nav';
+import './mmt_css/bootstrap.min.css';
+import MMTNav from './mmt_js/MMTNav.js';
 import * as serviceWorker from './serviceWorker';
 
-
-
-ReactDOM.render(<MMT_Nav />, document.getElementById('nav'));
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-
-
-
-
+ReactDOM.render(
+    <MMTNav />, 
+    document.getElementById('mmt-nav')
+);
 
 
 serviceWorker.unregister();
