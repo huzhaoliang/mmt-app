@@ -1,6 +1,7 @@
 import React from 'react';
-import Nav from 'react-bootstrap/Nav';
-import '../mmt_css/bootstrap.min.css';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+// import '../mmt_css/bootstrap.min.css';
+import '../img/favicon.ico'
 
 
 class MMTNav extends React.Component
@@ -8,29 +9,21 @@ class MMTNav extends React.Component
     render()
     {
         return (
-                <Nav class="navbar navbar-default navbar-fixed-top navbar-expand-sm">
-                    <div id="homeNavContainer" class="container">
-                        
-                        <div class="navbar-header collapse navbar-collapse">
-                            <ul class="navbar-nav">
-                                <li>
-                                    <a class="navbar-brand" herf="/">
-                                        
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/">首页</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">职位搜索</a>
-                                </li>
-                            </ul>
-                            
-                        </div>			
-                    </div>
+            <Container>
+                <Navbar bg="primary" expand="sm" className="navbar-fixed-top" variant="primary">
+                <Navbar.Brand href="/">
+                    <img className="d-inline-block align-top" src="../img/favicon.ico" alt="汽车人才网"/>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Nav className="mr-auto">
+                    <Nav.Link href="/" className="text-white">首页</Nav.Link>
+                    <Nav.Link href="#" className="text-white">职位搜索</Nav.Link>
                 </Nav>
-
-
+                <Navbar.Collapse id="basic-navbar-nav">
+                    
+                </Navbar.Collapse>
+                </Navbar>
+            </Container>
         );
     }
         
