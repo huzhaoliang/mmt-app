@@ -1,25 +1,68 @@
 import React from 'react';
+import $ from 'jquery';
 
-class MMT_Home extends React.Component
+
+class Home extends React.Component
 {
+    
     constructor(props) 
     {
         super(props);
-        this.state = {data:null};
+        this.state = 
+        {
+            api_hotJobs:
+            {
+                async : false,
+                type: 'GET',
+                url: 'localhost/api/hotjobs',
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8'
+            }
+        };
     }
 
     render()
     {
-
+        return (<div>Hi</div>);
     }
 
     componentDidMount()
     {
-        fetch("http://localhost/api/hotjobs",{method:'GET', headers:{'Content-Type':'application/json;charset=UTF-8'},mode:'cors', cache:'default'})
-        .then(response => response.json())
-        .then(data => this.setState({data}))
+        // fetch("http://localhost/api/hotjobs",{method:'GET', headers:{'Content-Type':'application/json;charset=UTF-8'},mode:'cors', cache:'default'})
+        // .then(response => response.json())
+        // .then(data => this.setState({data}))
+        //API.hotjobs();
+        this.hotjobs();
+
     }
+
+
+    //below is for api 
+    hotjobs()
+    {
+        $.ajax({
+            async: this.state.api_hotJobs.async,
+            type: this.state.api_hotJobs.type,
+            url: this.state.api_hotJobs.url,
+            dataType: this.state.api_hotJobs.dataType,
+            //contentType: this.state.api_hotJobs.contentType,
+            success: (data) =>
+                        {
+                            alert(data);
+                            console.log(data);	
+                        },
+            error: (data) =>
+                    {
+                        alert(data);
+                        alert("查询数据为空");
+                    }
+          });
+        
+    }
+
+
+
 
 }
 
-export default MMT_Home
+export default Home

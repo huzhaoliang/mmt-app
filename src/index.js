@@ -1,15 +1,14 @@
 import React from 'react';
-import './mmt_css/index.css';
 import ReactDOM from 'react-dom';
-import './mmt_css/bootstrap.min.css';
-import MMTNav from './mmt_js/MMTNav.js';
 import * as serviceWorker from './serviceWorker';
+import './mmt_css/index.css';
+import './mmt_css/bootstrap.min.css';
 
-ReactDOM.render(
-    <MMTNav />, 
-    document.getElementById('mmt-nav')
-);
+import Nav from './mmt_js/Nav.js';
+import Home from './mmt_js/Home.js';
 
+ReactDOM.render(<Nav />, document.getElementById('mmt-nav'));
+ReactDOM.render(<Home />, document.getElementById('mmt-container'));
 
 serviceWorker.unregister();
 

@@ -1,17 +1,27 @@
-
 "use strict"
 
-const serverip = "localhost";
+
 
 class API
 {
-    getHotJobs()
+    constructor() 
     {
-
+        
+        this.state = 
+        {
+            api_hotjobs : "/api/hotjobs",
+            serverip : "localhost"
+        };
     }
 
+    hotjobs()
+    {
+        alert("hot jobs");
+    }
+
+    abc = "4";
 
 }
 
 
-export default MMT_API;
+export default API;
