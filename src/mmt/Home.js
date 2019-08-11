@@ -16,9 +16,19 @@ class Home extends React.Component
                 type: 'GET',
                 url: 'localhost/api/hotjobs',
                 dataType: 'json',
-                contentType: 'application/json;charset=utf-8'
+                contentType: 'application/json;charset=utf-8',
+                success: (data) =>
+                        {
+                            
+                            console.log("success data");	
+                        },
+                error: (data) =>
+                        {
+                            alert("error data");
+                        }
             }
         };
+        
     }
 
     render()
@@ -32,27 +42,10 @@ class Home extends React.Component
 
     }
 
-
     //below is for api 
     hotjobs()
     {
-        $.ajax({
-            async: this.state.api_hotJobs.async,
-            type: this.state.api_hotJobs.type,
-            url: this.state.api_hotJobs.url,
-            dataType: this.state.api_hotJobs.dataType,
-            //contentType: this.state.api_hotJobs.contentType,
-            success: (data) =>
-                        {
-                            alert(data);
-                            console.log(data);	
-                        },
-            error: (data) =>
-                    {
-                        alert(data);
-                        alert("查询数据为空");
-                    }
-          });
+        $.ajax(this.state.api_hotJobs);
         
     }
 
