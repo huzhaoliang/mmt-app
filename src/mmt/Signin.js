@@ -2,9 +2,10 @@ import React from 'react';
 import $ from 'jquery';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
-class Signin extends React.Component 
+class SignIn extends React.Component 
 {
-    constructor(props) {
+    constructor(props) 
+    {
         super(props);
         this.state = 
         {
