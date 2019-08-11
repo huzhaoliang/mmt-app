@@ -28,10 +28,6 @@ class Home extends React.Component
 
     componentDidMount()
     {
-        // fetch("http://localhost/api/hotjobs",{method:'GET', headers:{'Content-Type':'application/json;charset=UTF-8'},mode:'cors', cache:'default'})
-        // .then(response => response.json())
-        // .then(data => this.setState({data}))
-        //API.hotjobs();
         this.hotjobs();
 
     }
