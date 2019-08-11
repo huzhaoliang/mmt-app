@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
-// import '../img/favicon.ico'
-import '../mmt_css/Nav.css'
+import './Nav.css'
 
 class MMTNav extends React.Component
 {
