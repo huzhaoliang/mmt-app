@@ -10,6 +10,9 @@ class Home extends React.Component
         super(props);
         this.state = 
         {
+            user:"",
+            token:"",
+            adList :{}, //ad you will use :)
             api_hotJobs:
             {
                 async : false,
@@ -21,6 +24,7 @@ class Home extends React.Component
                         {
                             
                             console.log("success data");	
+                            
                         },
                 error: (data) =>
                         {

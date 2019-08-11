@@ -11,8 +11,8 @@ class SignIn extends React.Component
         {
             user :'',
             token : '',
-            email : '',
-            password : "",
+            email : 'na',
+            password : 'na',
             api_signin:
             {
                 async: false,
@@ -82,14 +82,15 @@ class SignIn extends React.Component
         const emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
         const passwordFormat = /^[\w_-]{6,16}$/;
         
-        this.state.email = $("#input_email").val();
-        this.state.password = $("#input_password").val();
+        this.setState({email : $("#input_email").val()}); 
+        this.setState({password : $("#input_password").val()});
+       
 
-        if(this.state.email==undefined||this.state.email==null||this.state.email=="")
-        {
-            alert("邮箱不能为空");
-            return
-        }
+        // if(this.state.email==undefined||this.state.email==null||this.state.email=="")
+        // {
+        //     alert("邮箱不能为空");
+        //     return
+        // }
         
         if(emailFormat.test(this.state.email)==false)
         {
@@ -97,11 +98,11 @@ class SignIn extends React.Component
             return
         }
         
-        if(this.state.password ==undefined||this.state.password ==null||this.state.password =="")
-        {
-            alert("密码不能为空");
-            return
-        }
+        // if(this.state.password ==undefined||this.state.password ==null||this.state.password =="")
+        // {
+        //     alert("密码不能为空");
+        //     return
+        // }
 
         this.state.signIn();
     }
