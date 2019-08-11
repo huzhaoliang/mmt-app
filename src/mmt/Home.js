@@ -5,7 +5,7 @@ import $ from 'jquery';
 class Home extends React.Component
 {
     
-    constructor(props) 
+    constructor(props)
     {
         super(props);
         this.state = 
@@ -31,22 +31,26 @@ class Home extends React.Component
         
     }
 
-    render()
+    render = () =>
     {
         return (<div>Hi</div>);
     }
 
-    componentDidMount()
+    componentDidMount=()=>
     {
         this.hotjobs();
 
     }
 
+    componentWillUnmount=()=>
+    {
+        alert("bye");
+    }
+
     //below is for api 
-    hotjobs()
+    hotjobs = () =>
     {
         $.ajax(this.state.api_hotJobs);
-        
     }
 
 
