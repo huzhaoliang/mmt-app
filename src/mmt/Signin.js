@@ -82,6 +82,9 @@ class SignIn extends React.Component
         const emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
         const passwordFormat = /^[\w_-]{6,16}$/;
         
+        let email = $("#input_email").val();
+        let pass = $("#input_password").val();
+
         this.setState({email : $("#input_email").val()}); 
         this.setState({password : $("#input_password").val()});
        
