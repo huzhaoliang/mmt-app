@@ -1,6 +1,9 @@
-import React from 'react';
 import $ from 'jquery';
+import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+import './Signin.css'
 
 class SignIn extends React.Component 
 {
@@ -13,29 +16,29 @@ class SignIn extends React.Component
             token : '',
             email : 'na',
             password : 'na',
-            api_signin:
-            {
-                async: false,
-                type: 'POST',
-                url: 'localhost/api/signIn',
-                dataType: 'json',
-                //contentType: "application/json;charset=utf-8",
-                data: 
-                {
-                    'email': this.state.email,
-                    'password': this.state.password
+            // api_signin:
+            // {
+            //     async: false,
+            //     type: 'POST',
+            //     url: 'localhost/api/signIn',
+            //     dataType: 'json',
+            //     //contentType: "application/json;charset=utf-8",
+            //     data: 
+            //     {
+            //         'email': this.state.email,
+            //         'password': this.state.password
                     
-                },
-                success: function(data)
-                            {
-                                this.state.user = data.name;
-                                this.state.token = data.token;  
-                            },
-                error: function()
-                        {
-                            alert("登入系统失败");
-                        }
-                    }
+            //     },
+            //     success: function(data)
+            //                 {
+            //                     this.state.user = data.name;
+            //                     this.state.token = data.token;  
+            //                 },
+            //     error: function()
+            //             {
+            //                 alert("登入系统失败");
+            //             }
+            //         }
 
         };
     }
@@ -43,25 +46,25 @@ class SignIn extends React.Component
     render() 
     {
         return(
-            <Container>
+            <Container className="signin-container mt-5">
                 <Row>
                     <Col sm="6">
                         <Form>
                             <Form.Group controlId="singinEmail">
-                                <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" />
+                                <Form.Label>邮箱</Form.Label>
+                                <Form.Control type="email" placeholder="请输入邮箱" />
                                 <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
+                                邮箱仅对本人显示
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="singinPassword">
-                                <Form.Label>Enter password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Label>密码</Form.Label>
+                                <Form.Control type="password" placeholder="请输入密码" />
                             </Form.Group>
                             <Form.Group controlId="singinChecbox">
                                 <Form.Check type="checkbox" label="记住我的账号" />
                             </Form.Group>
-                            <Button variant="primary" type="submit" onClick={this.signIn}> 
+                            <Button className="btn-lg btn-block" type="submit" onClick={this.signIn}> 
                                 登 录
                             </Button>
                         </Form>
@@ -113,4 +116,14 @@ class SignIn extends React.Component
 
 }
 
-export default Signin;
+function SigninController() {
+    return(
+        <Router>
+            <Switch>
+                <Route exact path="/signIn" component={SignIn}></Route>
+            </Switch>
+        </Router>
+    );
+}
+
+export default SigninController;
