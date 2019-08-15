@@ -7,7 +7,7 @@ class MMTNav extends React.Component
     render()
     {
         return (
-            <Navbar bg="dark" expand="sm" fixed="top" variant="dark">
+            <Navbar bg="dark" expand="sm" variant="dark">
                 <Container>
                     <Navbar.Brand href="/">
                         <img className="d-inline-block align-top" src="/favicon.ico" alt="汽车人才网"/>
