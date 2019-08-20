@@ -1,9 +1,10 @@
 import $ from 'jquery';
 import React from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import './Signin.css'
+import MMTForm from './Form.js'
 
 class SignIn extends React.Component 
 {
@@ -45,29 +46,19 @@ class SignIn extends React.Component
 
     render() 
     {
+        const tmp = {
+            form:[
+                {name:"邮箱", type:"email"}, 
+                {name:"密码", type:"password"},
+                {name:"复选框", type:"checkbox", message:"记住我的账号"},
+                {name:"按钮", type:"submit", message:"登 录", action:"signin"}
+            ]
+        };
         return(
             <Container className="signin-container mt-3">
                 <Row>
                     <Col sm="6">
-                        <Form>
-                            <Form.Group controlId="singinEmail">
-                                <Form.Label>邮箱</Form.Label>
-                                <Form.Control type="email" placeholder="请输入邮箱" />
-                                <Form.Text className="text-muted">
-                                邮箱仅对本人显示
-                                </Form.Text>
-                            </Form.Group>
-                            <Form.Group controlId="singinPassword">
-                                <Form.Label>密码</Form.Label>
-                                <Form.Control type="password" placeholder="请输入密码" />
-                            </Form.Group>
-                            <Form.Group controlId="singinChecbox">
-                                <Form.Check type="checkbox" label="记住我的账号" />
-                            </Form.Group>
-                            <Button className="btn-lg btn-block" type="submit" onClick={this.signIn}> 
-                                登 录
-                            </Button>
-                        </Form>
+                        <MMTForm {...tmp}/>
                     </Col>
                     <Col sm="6">
                     </Col>
