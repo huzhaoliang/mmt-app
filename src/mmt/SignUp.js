@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import React from 'react';
-import { Container, Row, Col, Image, Tabs, Tab } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './Signup.css'
@@ -165,15 +165,5 @@ class SignUp extends React.Component
 
 
 }
-
-function SignupController() {
-    return(
-        <Router>
-            <Switch>
-                <Route exact path="/signUp" component={SignUp}></Route>
-            </Switch>
-        </Router>
-    );
-}
     
-export default SignupController;
+export default SignUp;

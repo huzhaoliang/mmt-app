@@ -129,14 +129,4 @@ class SignIn extends React.Component
 
 }
 
-function SigninController() {
-    return(
-        <Router>
-            <Switch>
-                <Route exact path="/signIn" component={SignIn}></Route>
-            </Switch>
-        </Router>
-    );
-}
-
-export default SigninController;
+export default SignIn;
