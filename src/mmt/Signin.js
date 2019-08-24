@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Container, Row, Col, Image, Tabs, Tab } from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './Signin.css'
 import MMTForm from './Form.js'
@@ -46,7 +46,7 @@ class SignIn extends React.Component
 
     render() 
     {
-        const tmp = {
+        const individual = {
             form:[
                 {name:"邮箱", type:"email"}, 
                 {name:"密码", type:"password"},
@@ -54,13 +54,35 @@ class SignIn extends React.Component
                 {name:"按钮", type:"submit", message:"登 录", action:"signin"}
             ]
         };
+        const enterprise = {
+            form:[
+                {name:"账号", type:"text"},
+                {name:"邮箱", type:"email"}, 
+                {name:"密码", type:"password"},
+                {name:"复选框", type:"checkbox", message:"记住我的账号"},
+                {name:"按钮", type:"submit", message:"登 录", action:"signin"}
+            ]
+        };
         return(
-            <Container className="signin-container mt-3">
+            <Container className="signin-container mt-5">
                 <Row>
                     <Col sm="6">
-                        <MMTForm {...tmp}/>
+                        <Image src="img/car_signin.jpg" fluid rounded />
                     </Col>
                     <Col sm="6">
+                        <Tabs defaultActiveKey="individual" id="signin_tab">
+                            <Tab className="mt-3" eventKey="individual" title="个人用户">
+                                <MMTForm {...individual}/>
+                            </Tab>
+                            <Tab className="mt-3" eventKey="enterprise" title="企业用户">
+                                <MMTForm {...enterprise}/>  
+                            </Tab>
+                        </Tabs>
+                        <div className="annotation text-center my-2">
+						  	<a href="/signIn">找回密码</a>
+						  	<span> | </span>
+						  	<a href="/signIn">免费注册</a>
+                        </div>
                     </Col>
                 </Row>
             </Container>

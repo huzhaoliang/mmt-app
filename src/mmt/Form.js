@@ -17,7 +17,7 @@ class MMTForm extends React.Component {
                 );
             } else if (element.name === "按钮") {
                 return(
-                    <Button className="btn-lg btn-block" type={element.type} onClick={element.action}> 
+                    <Button size="lg" block type={element.type} onClick={element.action}> 
                         {element.message}
                     </Button>
                 );

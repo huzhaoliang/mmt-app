@@ -8,12 +8,13 @@ import './mmt/bootstrap.min.css';
 import Home from './mmt/Home';
 import MMTNav from './mmt/Nav';
 import SigninController from './mmt/Signin'
+import SignupController from './mmt/Signup'
 
 
 ReactDOM.render(<MMTNav />, document.getElementById('mmt-nav'));
 // ReactDOM.render(<Home />, document.getElementById('mmt-container'));
 ReactDOM.render(<SigninController />, document.getElementById('mmt-container'));
-
+ReactDOM.render(<SignupController />, document.getElementById('mmt-container'));
 serviceWorker.unregister();
 
 
