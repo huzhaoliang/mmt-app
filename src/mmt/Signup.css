@@ -2,18 +2,6 @@
     /* text-emphasis-color: #666666; */
     color: #666666 !important;
 }
-/* 定义 tab 标签字体颜色和大小 */
-.nav-tabs > .nav-item {
-    color: #666666 !important;
-    font-size: 1.2em;
-}
-.nav-tabs > .active {
-    color: #ff6700 !important;
-}
-.nav-tabs > a:hover {
-    color: #ff6700 !important;
-}
-
 /* 定义 input 大小 */
 .form-group > input {
     height: 3.5em;

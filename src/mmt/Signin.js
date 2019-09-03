@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import React from 'react';
 import { Container, Row, Col, Image, Tabs, Tab } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './Signin.css'
 import MMTForm from './Form.js'

@@ -31,7 +31,7 @@ class MMTForm extends React.Component {
             }
         });
         return(
-            <Form>
+            <Form className="form-inline">
                 {formGroups}
             </Form>
         );
