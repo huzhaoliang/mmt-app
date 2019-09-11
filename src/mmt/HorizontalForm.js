@@ -1,6 +1,7 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Col } from 'react-bootstrap';
 
+// import './HorizontalForm.css'
 
 class HorizontalForm extends React.Component {
     constructor(props) {
@@ -11,23 +12,31 @@ class HorizontalForm extends React.Component {
         const formGroups = this.props.form.map((element, index) => {
             if (element.name === "按钮") {
                 return(
-                    <Button className="rounded-0"  type={element.type} onClick={element.action}> 
-                        {element.message}
-                    </Button>
+                    <Col>
+                        <Button className="rounded-0"  type={element.type} onClick={element.action} block> 
+                            {element.message}
+                        </Button>
+                    </Col>
                 );
             } else {
                 return(
-                    <Form.Group controlId={element.type + "_" + index}>
+                    <Col>
                         {/* <Form.Label>{element.name}</Form.Label> */}
                         <Form.Control className="rounded-0"  type={element.type} placeholder={"请输入" + element.name} />
-                    </Form.Group>
+                    </Col>
                 );
             }
         });
         return(
-            <Form className="form-inline">
-                {formGroups}
+            <Form>
+                <Form.Row>
+                    {formGroups}
+                </Form.Row>
             </Form>
+            
+            // <Form className="form-inline">
+            //     {formGroups}
+            // </Form>
         );
     }
 }
