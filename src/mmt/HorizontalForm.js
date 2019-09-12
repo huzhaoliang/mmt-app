@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 
-// import './HorizontalForm.css'
 
 class HorizontalForm extends React.Component {
     constructor(props) {

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import React from 'react';
-import { Container, Carousel } from 'react-bootstrap';
+import { Container, Carousel, Row, Col, Image } from 'react-bootstrap';
 
 import './Home.css'
 import HorizontalForm from './HorizontalForm.js'
@@ -50,8 +50,19 @@ class Home extends React.Component
         return(
             <Container className="mt-1">
                 <SingleCarousel />
-                <div className="my-2">
+                <div className="my-4">
                     <HorizontalForm {...searchBox}/>
+                </div>
+                <Row>
+                    <Col>
+                        <a href="/"><Image className="w-100" src="img/index1.gif" alt="First slide"/></a>
+                    </Col>
+                    <Col>
+                        <a href="/"><Image className="w-100" src="img/index1.gif" alt="First slide"/></a>
+                    </Col>
+                </Row>
+                <div className="my-2">
+                    <a href="/"><Image className="w-100" src="img/index2.gif" alt="First slide" fluid/></a>
                 </div>
             </Container>
                 
