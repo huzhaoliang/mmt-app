@@ -6,7 +6,27 @@ form > .form-row input {
     height: 3.5em;
 }
 button {
+    /* font-size: 1.5em !important; */
     height: 3.5em !important;
     border: 1px solid #ff6700 !important;
     background-color: #ff6700 !important;
+}
+
+/* for card */
+.card {
+    color: #666666;
+}
+.card .salary {
+    color: red;
+}
+
+/* for job list */
+.jobTable {
+    border: 1px solid #dcdcdc;
+}
+.jobTable ul {
+    list-style-type: square;
+}
+.jobTable li > .company {
+    color: #666666;
 }
