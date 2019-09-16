@@ -19,6 +19,9 @@ button {
 .card .salary {
     color: red;
 }
+.card .card-footer > a:hover {
+    color: #ff6700 !important;
+}
 
 /* for job list */
 .jobTable {
@@ -29,4 +32,7 @@ button {
 }
 .jobTable li > .company {
     color: #666666;
+}
+.jobTable li > a:hover {
+    color: #ff6700;
 }
