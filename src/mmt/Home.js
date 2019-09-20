@@ -33,6 +33,27 @@ class Home extends React.Component
                         { 
                             alert("error data");
                         }
+            },
+
+            api_searchJobs:
+            {
+                async : false,
+                type: 'GET',
+                url: 'localhost/api/hotjobs',
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8',
+                data:{},
+                success: (data) =>
+                        {
+                            
+                            console.log("success data");	
+                            
+                        },
+                error: (data) =>
+                        {
+                            alert("error data");
+                        }
+
             }
         };
         
@@ -107,10 +128,19 @@ class Home extends React.Component
         });
     }
 
+    //search job
+    searchJob = () =>
+    {
 
+    }
 
 
 }
+
+
+
+
+
 
 function SingleCarousel() {
     return(
