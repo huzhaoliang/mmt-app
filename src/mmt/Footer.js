@@ -15,8 +15,8 @@ class Footer extends React.Component
                             <p>深圳市万泉河科技股份有限公司 © 版权所有&nbsp;&nbsp;ICP No:粤B2-20050572&nbsp;&nbsp;粤ICP备08034547号</p>
                         </dd>
                         <dd>
-                            <Image src="img/sznet110.gif" alt="网安" />
-                            <Image src="img/police.gif" alt="公安" />
+                            <Image src="static/img/sznet110.gif" alt="网安" />
+                            <Image src="static/img/police.gif" alt="公安" />
                         </dd>
                     </dl>
                     

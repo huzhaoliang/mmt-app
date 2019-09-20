@@ -20,7 +20,7 @@ class Home extends React.Component
             {
                 async : false,
                 type: 'GET',
-                url: 'localhost/api/hotjobs',
+                url: 'http://localhost:8080/api/hotJobs',
                 dataType: 'json',
                 contentType: 'application/json;charset=utf-8',
                 success: (data) =>
@@ -30,7 +30,7 @@ class Home extends React.Component
                             
                         },
                 error: (data) =>
-                        {
+                        { 
                             alert("error data");
                         }
             }
@@ -55,14 +55,14 @@ class Home extends React.Component
                 </div>
                 <JobCard />
                 <div className="my-2">
-                    <a href="/"><Image className="w-100" src="img/index2.gif" alt="First slide" fluid/></a>
+                    <a href="/"><Image className="w-100" src="static/img/index2.gif" alt="First slide" fluid/></a>
                 </div>
                 <Row className="my-2">
                     <Col>
-                        <a href="/"><Image className="w-100" src="img/index1.gif" alt="First slide"/></a>
+                        <a href="/"><Image className="w-100" src="static/img/index1.gif" alt="First slide"/></a>
                     </Col>
                     <Col>
-                        <a href="/"><Image className="w-100" src="img/index1.gif" alt="First slide"/></a>
+                        <a href="/"><Image className="w-100" src="static/img/index1.gif" alt="First slide"/></a>
                     </Col>
                 </Row>
                 <div className="jobTable my-2">
@@ -87,7 +87,24 @@ class Home extends React.Component
     //below is for api 
     hotjobs = () =>
     {
-        $.ajax(this.state.api_hotJobs);
+        $.ajax({
+                async : false,
+                type: 'GET',
+                url: 'http://localhost:8080/api/hotJobs',
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8',
+                success: (data) =>
+                        {
+                            
+                            console.log("success data");	
+                            
+                        },
+                error: (data) =>
+                        {   
+                            console.log(data)
+                            alert("error data");
+                        }
+        });
     }
 
 
@@ -99,21 +116,21 @@ function SingleCarousel() {
     return(
         <Carousel>
             <Carousel.Item>
-                <img className="d-block w-100" src="img/car_signin.jpg" alt="First slide"/>
+                <img className="d-block w-100" src="static/img/carousel1.jpg" alt="First slide"/>
                 <Carousel.Caption>
                     <h3>First slide label</h3>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-                <img className="d-block w-100" src="img/car_signin.jpg" alt="Third slide"/>
+                <img className="d-block w-100" src="static/img/carousel2.jpg" alt="Third slide"/>
                 <Carousel.Caption>
                     <h3>Second slide label</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-                <img className="d-block w-100" src="img/car_signin.jpg" alt="Third slide"/>
+                <img className="d-block w-100" src="static/img/carousel3.jpg" alt="Third slide"/>
                 <Carousel.Caption>
                     <h3>Third slide label</h3>
                     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -128,7 +145,7 @@ function JobCard() {
         <CardDeck>
             <Card>
                 <Card.Link href="#">
-                    <Card.Img variant="top" src="img/index3.jpg" />
+                    <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>车身开发工程师</Card.Title>
@@ -149,7 +166,7 @@ function JobCard() {
             </Card>
             <Card>
                 <Card.Link href="#">
-                    <Card.Img variant="top" src="img/index3.jpg" />
+                    <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>电动汽车工程师</Card.Title>
@@ -170,7 +187,7 @@ function JobCard() {
             </Card>
             <Card>
                 <Card.Link href="#">
-                    <Card.Img variant="top" src="img/index3.jpg" />
+                    <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>项目推进管理</Card.Title>

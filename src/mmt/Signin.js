@@ -66,7 +66,7 @@ class SignIn extends React.Component
             <Container className="signin-container mt-5">
                 <Row>
                     <Col sm="6">
-                        <Image src="img/car_signin.jpg" fluid rounded />
+                        <Image src="static/img/signin.jpg" fluid rounded />
                     </Col>
                     <Col sm="6">
                         <Tabs defaultActiveKey="individual" id="signin_tab">
