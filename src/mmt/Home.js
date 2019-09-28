@@ -7,7 +7,8 @@ import HorizontalForm from './HorizontalForm.js'
 
 class Home extends React.Component
 {
-    
+ 
+
     constructor(props)
     {
         super(props);
@@ -39,10 +40,13 @@ class Home extends React.Component
             {
                 async : false,
                 type: 'GET',
-                url: 'localhost/api/hotjobs',
+                url: 'localhost/api/searchjobs',
                 dataType: 'json',
                 contentType: 'application/json;charset=utf-8',
-                data:{},
+                data:
+                {
+                    
+                },
                 success: (data) =>
                         {
                             
