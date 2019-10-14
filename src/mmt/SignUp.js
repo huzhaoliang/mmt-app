@@ -2,7 +2,7 @@ import $ from 'jquery';
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import './Signup.css'
+import './SignUp.css'
 import MMTForm from './Form.js'
 
 class SignUp extends React.Component 
