@@ -9,8 +9,8 @@ import './mmt/bootstrap.min.css';
 import Job from './mmt/Job';
 import Home from './mmt/Home';
 import MMTNav from './mmt/Nav';
-import SignIn from './mmt/Signin';
-import SignUp from './mmt/Signup';
+import SignIn from './mmt/SignIn';
+import SignUp from './mmt/SignUp';
 import Footer from './mmt/Footer';
 import Company from './mmt/Company';
 
