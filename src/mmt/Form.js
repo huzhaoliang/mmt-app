@@ -11,7 +11,7 @@ class MMTForm extends React.Component {
         const formGroups = this.props.form.map((element, index) => {
             if (element.type === "checkbox" || element.type === "radio") {
                 return(
-                    <Form.Group controlId={element.type + "_" + index}>
+                    <Form.Group controlId={element.id}>
                         <Form.Check type={element.type} label={element.message} />
                     </Form.Group>
                 );
@@ -23,7 +23,7 @@ class MMTForm extends React.Component {
                 );
             } else {
                 return(
-                    <Form.Group controlId={element.type + "_" + index}>
+                    <Form.Group controlId={element.id }>
                         <Form.Label>{element.name}</Form.Label>
                         <Form.Control type={element.type} placeholder={"请输入" + element.name} />
                     </Form.Group>

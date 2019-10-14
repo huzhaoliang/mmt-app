@@ -29,16 +29,15 @@ class SignIn extends React.Component
             //         'password': this.state.password
                     
             //     },
-            //     success: function(data)
-            //                 {
-            //                     this.state.user = data.name;
-            //                     this.state.token = data.token;  
-            //                 },
-            //     error: function()
-            //             {
-            //                 alert("登入系统失败");
-            //             }
-            //         }
+                success: function(data)
+                            {
+                                  
+                            },
+                error: function()
+                        {
+                            
+                        }
+                    }
 
         };
     }
@@ -47,19 +46,19 @@ class SignIn extends React.Component
     {
         const individual = {
             form:[
-                {name:"邮箱", type:"email"}, 
-                {name:"密码", type:"password"},
+                {name:"邮箱", type:"email", id:"email"}, 
+                {name:"密码", type:"password", id:"password"},
                 {name:"复选框", type:"checkbox", message:"记住我的账号"},
-                {name:"按钮", type:"submit", message:"登 录", action:"signin"}
+                {name:"按钮", type:"submit", message:"登 录", id:"signIn_button", action:this.signIn}
             ]
         };
         const enterprise = {
             form:[
-                {name:"账号", type:"text"},
-                {name:"邮箱", type:"email"}, 
-                {name:"密码", type:"password"},
+                {name:"账号", type:"text", id:"account"},
+                {name:"邮箱", type:"email", id:"email_enterprise"}, 
+                {name:"密码", type:"password", id:"password_enterprise"},
                 {name:"复选框", type:"checkbox", message:"记住我的账号"},
-                {name:"按钮", type:"submit", message:"登 录", action:"signin"}
+                {name:"按钮", type:"submit", message:"登 录", id:"signIn_button_enterprise", action:this.signIn_enterprise}
             ]
         };
         return(
@@ -97,35 +96,88 @@ class SignIn extends React.Component
         const emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
         const passwordFormat = /^[\w_-]{6,16}$/;
         
-        let email = $("#input_email").val();
-        let pass = $("#input_password").val();
+        let email = $("#email").val();
+        let pass = $("#password").val();
 
-        this.setState({email : $("#input_email").val()}); 
-        this.setState({password : $("#input_password").val()});
-       
-
-        // if(this.state.email==undefined||this.state.email==null||this.state.email=="")
-        // {
-        //     alert("邮箱不能为空");
-        //     return
-        // }
+        if(email==undefined||email==null||email=="")
+        {
+            alert("邮箱不能为空");
+            return
+        }
         
-        if(emailFormat.test(this.state.email)==false)
+        if(emailFormat.test(email)==false)
         {
             alert("邮箱格式不正确");
             return
         }
         
-        // if(this.state.password ==undefined||this.state.password ==null||this.state.password =="")
-        // {
-        //     alert("密码不能为空");
-        //     return
-        // }
+        if(pass ==undefined||pass ==null||pass =="")
+        {
+            alert("密码不能为空");
+            return
+        }
 
-        this.state.signIn();
+        this.start_sign_in(email, pass);
+    }
+
+    signIn_enterprise = () => 
+    {
+        alert("signin");
+        const emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
+        const passwordFormat = /^[\w_-]{6,16}$/;
+        
+        let email = $("#email_enterprise").val();
+        let pass = $("#password_enterprise").val();
+
+        if(email==undefined||email==null||email=="")
+        {
+            alert("邮箱不能为空");
+            return
+        }
+        
+        if(emailFormat.test(email)==false)
+        {
+            alert("邮箱格式不正确");
+            return
+        }
+        
+        if(pass ==undefined||pass ==null||pass =="")
+        {
+            alert("密码不能为空");
+            return
+        }
+
+        this.start_sign_in(email, pass);
     }
 
 
-}
+    start_sign_in = (_user, _pass) =>
+    {
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost:8080/api/signUp",
+            dataType: "text",
+            //contentType: "application/json;charset=utf-8",
+            async: false,
+            data: 
+            {
+                "eamil" : _user,
+                "password" : _pass,
+                
+            },
+            success: function(data)
+                        {
+                            alert(data);
+                            this.state.user = data.name;
+                            this.state.token = data.token;
+
+                        },
+            error: function()
+                        {
+                            alert("登入系统失败");
+                        }
+            
+          });
+    }
 
 export default SignIn;
