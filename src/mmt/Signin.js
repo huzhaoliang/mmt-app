@@ -66,7 +66,6 @@ class SignIn extends React.Component
 
     signIn = () => 
     {
-        alert("signin");
         const emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
         const passwordFormat = /^[\w_-]{6,16}$/;
         
@@ -96,7 +95,6 @@ class SignIn extends React.Component
 
     signIn_enterprise = () => 
     {
-        alert("signin");
         const emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
         const passwordFormat = /^[\w_-]{6,16}$/;
         
@@ -125,17 +123,18 @@ class SignIn extends React.Component
     }
 
 
-    start_sign_in = (_user, _pass) =>
+    start_sign_in = (_email, _pass) =>
     {
+        alert(_email + " " + _pass);
         $.ajax({
             type: 'POST',
-            url: "http://localhost:8080/api/signUp",
+            url: "http://localhost:8080/api/signIn",
             dataType: "text",
             //contentType: "application/json;charset=utf-8",
             async: false,
             data: 
             {
-                "eamil" : _user,
+                "email" : _email,
                 "password" : _pass,
                 
             },
