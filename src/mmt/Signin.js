@@ -16,30 +16,7 @@ class SignIn extends React.Component
             token : '',
             email : 'na',
             password : 'na',
-            // api_signin:
-            // {
-            //     async: false,
-            //     type: 'POST',
-            //     url: 'localhost/api/signIn',
-            //     dataType: 'json',
-            //     //contentType: "application/json;charset=utf-8",
-            //     data: 
-            //     {
-            //         'email': this.state.email,
-            //         'password': this.state.password
-                    
-            //     },
-                success: function(data)
-                            {
-                                  
-                            },
-                error: function()
-                        {
-                            
-                        }
-                    }
-
-        };
+        }
     }
 
     render() 
@@ -87,9 +64,6 @@ class SignIn extends React.Component
         );
     }
 
-
-
-    //below is function
     signIn = () => 
     {
         alert("signin");
@@ -179,5 +153,8 @@ class SignIn extends React.Component
             
           });
     }
+
+
+}
 
 export default SignIn;
