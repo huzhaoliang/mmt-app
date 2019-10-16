@@ -1,5 +1,3 @@
-"use strict"
-
 import $ from 'jquery';
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -12,6 +10,7 @@ class SignUp extends React.Component
     constructor(props) 
     {
         super(props);
+        this.state = {};
     }
 
     render() {
@@ -47,8 +46,6 @@ class SignUp extends React.Component
         );
     }
 
-
-
     //sign up function
     signUp = () =>
     {
@@ -60,43 +57,42 @@ class SignUp extends React.Component
         let password = $("#password").val();
         let passcode = $("#passcode").val();
 
-        if(username==undefined||username==null||username=="")
+        if(username===undefined||username==null||username==="")
         {
             alert("用户名不能为空");
         }
         
-        if(email==undefined||email==null||email=="")
+        if(email===undefined||email==null||email==="")
         {
             alert("邮箱不能为空");
             return
         }
         
-        if(emailFormat.test(email)==false)
+        if(emailFormat.test(email)===false)
         {
             alert("邮箱格式不正确");
             return
         }
         
-        if(password==undefined||password==null||password=="")
+        if(password===undefined||password==null||password==="")
         {
             alert("密码不能为空");
             return
         }
         
-        if(passwordFormat.test(password)==false)
+        if(passwordFormat.test(password)===false)
         {
             alert("密码不符合要求");
             return
         }
         
-        
-        if(passcode==undefined||passcode==null||passcode=="")
+        if(passcode===undefined||passcode==null||passcode==="")
         {
             alert("密码需要确认");
             return
         }
         
-        if(passcode!=password)
+        if(passcode!==password)
         {
             alert("密码两次输入不一致");
             return
@@ -119,19 +115,13 @@ class SignUp extends React.Component
                             alert(res);
                             //window.location.href = "signin";
                             //sessionStorage["redirect_uri"] = "/index"
-
                         },
             error: function(res)
                         {
                             alert(res);
                         }
-            
           });
-
     }
-
-
-
 }
     
 export default SignUp;

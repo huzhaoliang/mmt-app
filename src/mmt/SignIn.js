@@ -72,24 +72,21 @@ class SignIn extends React.Component
         let email = $("#email").val();
         let pass = $("#password").val();
 
-        if(email==undefined||email==null||email=="")
+        if(email===undefined||email==null||email==="")
         {
             alert("邮箱不能为空");
             return
         }
-        
-        if(emailFormat.test(email)==false)
+        if(emailFormat.test(email)===false)
         {
             alert("邮箱格式不正确");
             return
         }
-        
-        if(pass ==undefined||pass ==null||pass =="")
+        if(pass===undefined||pass==null||pass==="")
         {
             alert("密码不能为空");
             return
         }
-
         this.start_sign_in(email, pass);
     }
 
@@ -101,30 +98,28 @@ class SignIn extends React.Component
         let email = $("#email_enterprise").val();
         let pass = $("#password_enterprise").val();
 
-        if(email==undefined||email==null||email=="")
+        if(email===undefined||email==null||email==="")
         {
             alert("邮箱不能为空");
             return
         }
-        
-        if(emailFormat.test(email)==false)
+        if(emailFormat.test(email)===false)
         {
             alert("邮箱格式不正确");
             return
         }
-        
-        if(pass ==undefined||pass ==null||pass =="")
+        if(pass===undefined||pass ==null||pass==="")
         {
             alert("密码不能为空");
             return
         }
-
         this.start_sign_in(email, pass);
     }
 
 
     start_sign_in = (_email, _pass) =>
     {
+        alert("HELLO");
         alert(_email + " " + _pass);
         $.ajax({
             type: 'POST',
@@ -136,24 +131,20 @@ class SignIn extends React.Component
             {
                 "email" : _email,
                 "password" : _pass,
-                
             },
             success: function(data)
                         {
                             alert(data);
                             this.state.user = data.name;
                             this.state.token = data.token;
-
                         },
             error: function()
                         {
                             alert("登入系统失败");
                         }
-            
+
           });
     }
-
-
 }
 
 export default SignIn;

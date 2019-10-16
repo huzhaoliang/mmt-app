@@ -3,10 +3,6 @@ import { Form, Button } from 'react-bootstrap';
 
 
 class MMTForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
     render() {
         const formGroups = this.props.form.map((element, index) => {
             if (element.type === "checkbox" || element.type === "radio") {
