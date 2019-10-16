@@ -11,58 +11,13 @@ class Home extends React.Component
     constructor(props)
     {
         super(props);
-        this.state = 
-        {
-            user:"",
-            token:"",
-            adList :{}, //ad you will use :)
-            api_hotJobs:
-            {
-                async : false,
-                type: 'GET',
-                url: 'http://localhost:8080/api/hotJobs',
-                dataType: 'json',
-                contentType: 'application/json;charset=utf-8',
-                success: (data) =>
-                        {
-                            
-                            console.log("success data");	
-                            
-                        },
-                error: (data) =>
-                        { 
-                            alert("error data");
-                        }
-            },
-
-            api_searchJobs:
-            {
-                async : false,
-                type: 'GET',
-                url: 'localhost/api/searchjobs',
-                dataType: 'json',
-                contentType: 'application/json;charset=utf-8',
-                data:
-                {
-                    
-                },
-                success: (data) =>
-                        {
-                            
-                            console.log("success data");	
-                            
-                        },
-                error: (data) =>
-                        {
-                            alert("error data");
-                        }
-
-            }
-        };
+        this.state = {};
         
     }
  
     render(){
+        let hot_jobs = this.getHotJobs();
+        console.log(hot_jobs);
         const searchBox = {
             form:[
                 {name:"城市", type:"text"}, 
@@ -77,7 +32,7 @@ class Home extends React.Component
                 <div className="my-4">
                     <HorizontalForm {...searchBox}/>
                 </div>
-                <JobCard />
+                <JobCard hotJobs={hot_jobs} />
                 <div className="my-2">
                     <a href="/"><Image className="w-100" src="static/img/index2.gif" alt="First slide" fluid/></a>
                 </div>
@@ -90,27 +45,30 @@ class Home extends React.Component
                     </Col>
                 </Row>
                 <div className="jobTable my-2">
-                    <JobTable />
+                    {/* <JobTable /> */}
+                    {/* <Table borderless className="my-0">
+                        <tbody>
+                        </tbody>
+                    </Table> */}
                 </div>
             </Container>
-                
         );
     }
 
     componentDidMount=()=>
     {
-        this.hotjobs();
 
     }
 
     componentWillUnmount=()=>
     {
-        alert("bye");
+
     }
 
     //below is for api 
-    hotjobs = () =>
+    getHotJobs = () =>
     {
+        let hotJobs = "";
         $.ajax({
                 async : false,
                 type: 'GET',
@@ -119,18 +77,15 @@ class Home extends React.Component
                 contentType: 'application/json;charset=utf-8',
                 success: (data) =>
                         {
-                            
-                            console.log("success data");	
-                            
+                            hotJobs = data;
                         },
                 error: (data) =>
                         {   
-                            console.log(data)
-                            alert("error data");
+                            console.log("Fail to get hot jobs!");
                         }
         });
+        return hotJobs;
     }
-
     //search job
     searchJob = () =>
     {
@@ -139,11 +94,6 @@ class Home extends React.Component
 
 
 }
-
-
-
-
-
 
 function SingleCarousel() {
     return(
@@ -173,7 +123,7 @@ function SingleCarousel() {
     );
 }
 
-function JobCard() {
+function JobCard(props) {
     return(
         <CardDeck>
             <Card>
@@ -181,18 +131,25 @@ function JobCard() {
                     <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
-                    <Card.Title>车身开发工程师</Card.Title>
+                    <Card.Title>{props.hotJobs[0][1]}</Card.Title>
                     <Card.Text>
-                        <strong><span className="salary">面议 </span></strong>
-                        经验3年 丨 本科 丨 南昌市
-                        <div className="mt-1">
+                        <strong>
+                            <span className="salary">{props.hotJobs[0][4]}-{props.hotJobs[0][5]}</span>
+                            <span>&nbsp;&nbsp;</span>
+                        </strong>
+                            <span>经验</span>
+                            <span>{props.hotJobs[0][2]}</span>
+                            <span>年</span>
+                            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                            <span>{props.hotJobs[0][3]}</span>
+                        {/* <div className="mt-1">
                             <Badge variant="success" className="mr-1">五险一金</Badge>
                             <Badge variant="success" className="mr-1">加班补助</Badge>
                             <Badge variant="success" className="mr-1">生日福利</Badge>
                             <Badge variant="success" className="mr-1">年底双薪</Badge>
-                        </div>
+                        </div> */}
                     </Card.Text>
-                    </Card.Body>
+                </Card.Body>
                 <Card.Footer>
                     <Card.Link href="#" className="text-muted">查看详情...</Card.Link>
                 </Card.Footer>
@@ -202,18 +159,25 @@ function JobCard() {
                     <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
-                    <Card.Title>电动汽车工程师</Card.Title>
+                    <Card.Title>{props.hotJobs[1][1]}</Card.Title>
                     <Card.Text>
-                        <strong><span className="salary">6K-15K </span></strong>
-                        经验5年 丨 本科 丨 资阳市
-                        <div className="mt-1">
+                        <strong>
+                            <span className="salary">{props.hotJobs[1][4]}-{props.hotJobs[1][5]}</span>
+                            <span>&nbsp;&nbsp;</span>
+                        </strong>
+                            <span>经验</span>
+                            <span>{props.hotJobs[1][2]}</span>
+                            <span>年</span>
+                            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                            <span>{props.hotJobs[1][3]}</span>
+                        {/* <div className="mt-1">
                             <Badge variant="success" className="mr-1">五险一金</Badge>
                             <Badge variant="success" className="mr-1">加班补助</Badge>
                             <Badge variant="success" className="mr-1">生日福利</Badge>
                             <Badge variant="success" className="mr-1">年底双薪</Badge>
-                        </div>
+                        </div> */}
                     </Card.Text>
-                    </Card.Body>
+                </Card.Body>
                 <Card.Footer>
                     <Card.Link href="#" className="text-muted">查看详情...</Card.Link>
                 </Card.Footer>
@@ -223,16 +187,23 @@ function JobCard() {
                     <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
-                    <Card.Title>项目推进管理</Card.Title>
+                    <Card.Title>{props.hotJobs[2][1]}</Card.Title>
                     <Card.Text>
-                        <strong><span className="salary">面议 </span></strong>
-                        面议 毕业生 丨 本科 丨 广州市
-                        <div className="mt-1">
+                        <strong>
+                            <span className="salary">{props.hotJobs[2][4]}-{props.hotJobs[2][5]}</span>
+                            <span>&nbsp;&nbsp;</span>
+                        </strong>
+                            <span>经验</span>
+                            <span>{props.hotJobs[2][2]}</span>
+                            <span>年</span>
+                            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                            <span>{props.hotJobs[2][3]}</span>
+                        {/* <div className="mt-1">
                             <Badge variant="success" className="mr-1">五险一金</Badge>
                             <Badge variant="success" className="mr-1">加班补助</Badge>
                             <Badge variant="success" className="mr-1">生日福利</Badge>
                             <Badge variant="success" className="mr-1">年底双薪</Badge>
-                        </div>
+                        </div> */}
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
@@ -247,68 +218,47 @@ function JobTable() {
     return(
         <Table borderless className="my-0">
             <tbody>
-                <tr>
-                    <td>
-                        <ul className="my-0">
-                            <li>
-                                <a className="company" href="/">深圳市新力达汽车贸易有限公司</a>
-                                <span>&nbsp;&nbsp;</span>
-                                <a href="/">服务顾问</a>
-                            </li>
-                            <li>
-                                <a className="company" href="/">深圳市标鹏汽车有限公司</a>
-                                <span>&nbsp;&nbsp;</span>
-                                <a href="/">销售顾问</a>
-                            </li>
-                            <li>
-                                <a className="company" href="/">广汽丰田诚立番禺店</a>
-                                <span>&nbsp;&nbsp;</span>
-                                <a href="/">机修人员</a>
-                            </li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul className="my-0">
-                            <li>
-                                <a className="company" href="/">深圳市新力达汽车贸易有限公司</a>
-                                <span>&nbsp;&nbsp;</span>
-                                <a href="/">服务顾问</a>
-                            </li>
-                            <li>
-                                <a className="company" href="/">深圳市标鹏汽车有限公司</a>
-                                <span>&nbsp;&nbsp;</span>
-                                <a href="/">销售顾问</a>
-                            </li>
-                            <li>
-                                <a className="company" href="/">广汽丰田诚立番禺店</a>
-                                <span>&nbsp;&nbsp;</span>
-                                <a href="/">机修人员</a>
-                            </li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul className="my-0">
-                            <li>
-                                <a className="company" href="/">深圳市新力达汽车贸易有限公司</a>
-                                <span>&nbsp;&nbsp;</span>
-                                <a href="/">服务顾问</a>
-                            </li>
-                            <li>
-                                <a className="company" href="/">深圳市标鹏汽车有限公司</a>
-                                <span>&nbsp;&nbsp;</span>
-                                <a href="/">销售顾问</a>
-                            </li>
-                            <li>
-                                <a className="company" href="/">广汽丰田诚立番禺店</a>
-                                <span>&nbsp;&nbsp;</span>
-                                <a href="/">机修人员</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
+                {getTableRow()}
+                {/* $.each(this.state.common_job, ()=>{console.log(this.state.common_job[1])})) */}
             </tbody>
         </Table>
     );
 }
+
+
+function getTableRow() {
+    return(
+        <tr>
+            <td>
+                <ul className="my-0">
+                    <li>
+                        <a className="company" href="/">深圳市新力达汽车贸易有限公司</a>
+                        <span>&nbsp;&nbsp;</span>
+                        <a href="/">服务顾问</a>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul className="my-0">
+                    <li>
+                        <a className="company" href="/">深圳市标鹏汽车有限公司</a>
+                        <span>&nbsp;&nbsp;</span>
+                        <a href="/">销售顾问</a>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul className="my-0">
+                    <li>
+                        <a className="company" href="/">广汽丰田诚立番禺店</a>
+                        <span>&nbsp;&nbsp;</span>
+                        <a href="/">机修人员</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    );
+}
+
 
 export default Home
