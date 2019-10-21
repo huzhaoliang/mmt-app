@@ -64,8 +64,9 @@ class SignIn extends React.Component
         );
     }
 
-    signIn = () => 
+    signIn = (e) => 
     {
+        e.preventDefault();
         const emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
         const passwordFormat = /^[\w_-]{6,16}$/;
         
@@ -88,6 +89,8 @@ class SignIn extends React.Component
             return
         }
         this.start_sign_in(email, pass);
+        window.location.href = '/';
+        // this.props.history.push("/");
     }
 
     signIn_enterprise = () => 
@@ -116,11 +119,8 @@ class SignIn extends React.Component
         this.start_sign_in(email, pass);
     }
 
-
     start_sign_in = (_email, _pass) =>
     {
-        alert("HELLO");
-        alert(_email + " " + _pass);
         $.ajax({
             type: 'POST',
             url: "http://localhost:8080/api/signIn",
@@ -128,21 +128,20 @@ class SignIn extends React.Component
             //contentType: "application/json;charset=utf-8",
             async: false,
             data: 
-            {
+            { 
                 "email" : _email,
                 "password" : _pass,
             },
             success: function(data)
                         {
-                            alert(data);
-                            this.state.user = data.name;
-                            this.state.token = data.token;
+                            data = JSON.parse(data)
+                            sessionStorage.token = data.token;
+                            sessionStorage.setItem("user", data.name);
                         },
             error: function()
                         {
-                            alert("登入系统失败");
+                            alert("Some failure occured!");
                         }
-
           });
     }
 }

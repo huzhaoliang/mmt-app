@@ -77,6 +77,7 @@ class Home extends React.Component
                 contentType: 'application/json;charset=utf-8',
                 success: (data) =>
                         {
+                            console.log(typeof(data));
                             hotJobs = data;
                         },
                 error: (data) =>
