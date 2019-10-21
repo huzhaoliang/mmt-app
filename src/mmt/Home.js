@@ -16,7 +16,7 @@ class Home extends React.Component
     }
  
     render(){
-        let hot_jobs = this.getHotJobs();
+        let hot_jobs = this.hotJobs();
         console.log(hot_jobs);
         const searchBox = {
             form:[
@@ -66,7 +66,7 @@ class Home extends React.Component
     }
 
     //below is for api 
-    getHotJobs = () =>
+    hotJobs = () =>
     {
         let hotJobs = "";
         $.ajax({
@@ -89,7 +89,11 @@ class Home extends React.Component
     //search job
     searchJob = () =>
     {
-
+        $.ajax({
+            async : false,
+            type: 'GET',
+            url: 'http://localhost:8080/api/searchJobs'
+        });
     }
 
 
