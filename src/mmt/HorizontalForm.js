@@ -11,7 +11,7 @@ class HorizontalForm extends React.Component {
         const formGroups = this.props.form.map((element, index) => {
             if (element.name === "按钮") {
                 return(
-                    <Col>
+                    <Col key={index}>
                         <Button className="rounded-0"  type={element.type} onClick={element.action} block> 
                             {element.message}
                         </Button>
@@ -19,7 +19,7 @@ class HorizontalForm extends React.Component {
                 );
             } else {
                 return(
-                    <Col>
+                    <Col key={index}>
                         {/* <Form.Label>{element.name}</Form.Label> */}
                         <Form.Control className="rounded-0"  type={element.type} placeholder={"请输入" + element.name} />
                     </Col>

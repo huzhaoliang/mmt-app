@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import React from 'react';
-import { Container, Carousel, Row, Col, Image, CardDeck, Card, Badge, Table } from 'react-bootstrap';
+import { Container, Carousel, Row, Col, Image, CardDeck, Card } from 'react-bootstrap';
 
 import './Home.css'
 import HorizontalForm from './HorizontalForm.js'
@@ -17,13 +17,12 @@ class Home extends React.Component
  
     render(){
         let hot_jobs = this.hotJobs();
-        console.log(hot_jobs);
         const searchBox = {
             form:[
                 {name:"城市", type:"text"}, 
                 {name:"公司", type:"text"},
                 {name:"职位", type:"text"},
-                {name:"按钮", type:"submit", message:"搜 索", action:"signin"}
+                {name:"按钮", type:"submit", message:"搜 索", action:this.searchBox}
             ]
         };
         return(
@@ -77,7 +76,6 @@ class Home extends React.Component
                 contentType: 'application/json;charset=utf-8',
                 success: (data) =>
                         {
-                            console.log(typeof(data));
                             hotJobs = data;
                         },
                 error: (data) =>
@@ -97,28 +95,33 @@ class Home extends React.Component
         });
     }
 
-
 }
 
 function SingleCarousel() {
     return(
         <Carousel>
             <Carousel.Item>
-                <img className="d-block w-100" src="static/img/carousel1.jpg" alt="First slide"/>
+                <a href="/">
+                    <img className="d-block w-100" src="static/img/carousel1.jpg" alt="First slide"/>
+                </a>
                 <Carousel.Caption>
                     <h3>First slide label</h3>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-                <img className="d-block w-100" src="static/img/carousel2.jpg" alt="Third slide"/>
+                <a href="/">
+                    <img className="d-block w-100" src="static/img/carousel2.jpg" alt="second slide"/>
+                </a>
                 <Carousel.Caption>
                     <h3>Second slide label</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-                <img className="d-block w-100" src="static/img/carousel3.jpg" alt="Third slide"/>
+                <a href="/">
+                    <img className="d-block w-100" src="static/img/carousel3.jpg" alt="Third slide"/>
+                </a>
                 <Carousel.Caption>
                     <h3>Third slide label</h3>
                     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -132,11 +135,13 @@ function JobCard(props) {
     return(
         <CardDeck>
             <Card>
-                <Card.Link href="#">
+                <Card.Link href="#" className="p-1">
                     <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
-                    <Card.Title>{props.hotJobs[0][1]}</Card.Title>
+                    <Card.Title>
+                        <Card.Link href="#">{props.hotJobs[0][1]}</Card.Link>
+                    </Card.Title>
                     <Card.Text>
                         <strong>
                             <span className="salary">{props.hotJobs[0][4]}-{props.hotJobs[0][5]}</span>
@@ -160,11 +165,13 @@ function JobCard(props) {
                 </Card.Footer>
             </Card>
             <Card>
-                <Card.Link href="#">
+                <Card.Link href="#" className="p-1">
                     <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
-                    <Card.Title>{props.hotJobs[1][1]}</Card.Title>
+                    <Card.Title>
+                        <Card.Link href="#">{props.hotJobs[1][1]}</Card.Link>
+                    </Card.Title>
                     <Card.Text>
                         <strong>
                             <span className="salary">{props.hotJobs[1][4]}-{props.hotJobs[1][5]}</span>
@@ -188,11 +195,13 @@ function JobCard(props) {
                 </Card.Footer>
             </Card>
             <Card>
-                <Card.Link href="#">
+                <Card.Link href="#" className="p-1">
                     <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
-                    <Card.Title>{props.hotJobs[2][1]}</Card.Title>
+                    <Card.Title>
+                        <Card.Link href="#">{props.hotJobs[2][1]}</Card.Link>
+                    </Card.Title>
                     <Card.Text>
                         <strong>
                             <span className="salary">{props.hotJobs[2][4]}-{props.hotJobs[2][5]}</span>
@@ -219,51 +228,51 @@ function JobCard(props) {
     );
 }
 
-function JobTable() {
-    return(
-        <Table borderless className="my-0">
-            <tbody>
-                {getTableRow()}
-                {/* $.each(this.state.common_job, ()=>{console.log(this.state.common_job[1])})) */}
-            </tbody>
-        </Table>
-    );
-}
+// function JobTable() {
+//     return(
+//         <Table borderless className="my-0">
+//             <tbody>
+//                 {getTableRow()}
+//                 {/* $.each(this.state.common_job, ()=>{console.log(this.state.common_job[1])})) */}
+//             </tbody>
+//         </Table>
+//     );
+// }
 
 
-function getTableRow() {
-    return(
-        <tr>
-            <td>
-                <ul className="my-0">
-                    <li>
-                        <a className="company" href="/">深圳市新力达汽车贸易有限公司</a>
-                        <span>&nbsp;&nbsp;</span>
-                        <a href="/">服务顾问</a>
-                    </li>
-                </ul>
-            </td>
-            <td>
-                <ul className="my-0">
-                    <li>
-                        <a className="company" href="/">深圳市标鹏汽车有限公司</a>
-                        <span>&nbsp;&nbsp;</span>
-                        <a href="/">销售顾问</a>
-                    </li>
-                </ul>
-            </td>
-            <td>
-                <ul className="my-0">
-                    <li>
-                        <a className="company" href="/">广汽丰田诚立番禺店</a>
-                        <span>&nbsp;&nbsp;</span>
-                        <a href="/">机修人员</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    );
-}
+// function getTableRow() {
+//     return(
+//         <tr>
+//             <td>
+//                 <ul className="my-0">
+//                     <li>
+//                         <a className="company" href="/">深圳市新力达汽车贸易有限公司</a>
+//                         <span>&nbsp;&nbsp;</span>
+//                         <a href="/">服务顾问</a>
+//                     </li>
+//                 </ul>
+//             </td>
+//             <td>
+//                 <ul className="my-0">
+//                     <li>
+//                         <a className="company" href="/">深圳市标鹏汽车有限公司</a>
+//                         <span>&nbsp;&nbsp;</span>
+//                         <a href="/">销售顾问</a>
+//                     </li>
+//                 </ul>
+//             </td>
+//             <td>
+//                 <ul className="my-0">
+//                     <li>
+//                         <a className="company" href="/">广汽丰田诚立番禺店</a>
+//                         <span>&nbsp;&nbsp;</span>
+//                         <a href="/">机修人员</a>
+//                     </li>
+//                 </ul>
+//             </td>
+//         </tr>
+//     );
+// }
 
 
 export default Home

@@ -67,8 +67,8 @@ class SignIn extends React.Component
     signIn = (e) => 
     {
         e.preventDefault();
-        const emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
-        const passwordFormat = /^[\w_-]{6,16}$/;
+        const emailFormat = /^([0-9A-Za-z\-_]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
+        // const passwordFormat = /^[\w_-]{6,16}$/;
         
         let email = $("#email").val();
         let pass = $("#password").val();
@@ -93,10 +93,11 @@ class SignIn extends React.Component
         // this.props.history.push("/");
     }
 
-    signIn_enterprise = () => 
+    signIn_enterprise = (e) => 
     {
-        const emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
-        const passwordFormat = /^[\w_-]{6,16}$/;
+        e.preventDefault();
+        const emailFormat = /^([0-9A-Za-z\-_]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
+        // const passwordFormat = /^[\w_-]{6,16}$/;
         
         let email = $("#email_enterprise").val();
         let pass = $("#password_enterprise").val();
@@ -117,6 +118,7 @@ class SignIn extends React.Component
             return
         }
         this.start_sign_in(email, pass);
+        window.location.href = '/';
     }
 
     start_sign_in = (_email, _pass) =>

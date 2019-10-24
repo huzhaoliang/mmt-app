@@ -12,12 +12,23 @@ button {
     background-color: #ff6700 !important;
 }
 
+/* carousel */
+.carousel img {
+    height: 25em;
+}
+
 /* for card */
 .card {
     color: #666666;
 }
 .card .salary {
     color: red;
+}
+.card-title > a {
+    color: #666666;
+}
+.card-title > a:hover {
+    color: #ff6700;
 }
 .card .card-footer > a:hover {
     color: #ff6700 !important;

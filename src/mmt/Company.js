@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Card } from 'react-bootstrap';
 
-import './Footer.css'
+import './Company.css'
 
 class Company extends React.Component
 {
@@ -15,7 +15,7 @@ class Company extends React.Component
         return(
             <Container className="my-2">
                 <Card>
-                    <Card.Img variant="top" src="static/img/lg.gif" />
+                    <Card.Img className="p-1" variant="top" src="static/img/lg.gif" />
                     <Card.Body>
                         <Card.Title>公司简介</Card.Title>
                         <Card.Text>
@@ -25,7 +25,8 @@ class Company extends React.Component
                         </Card.Text>
                         <Card.Title>招聘职位</Card.Title>
                         <Card.Text>
-
+                            <Card.Link href="#" className="p-1">营销专员</Card.Link><br></br>
+                            <Card.Link href="#" className="p-1">采购专员</Card.Link>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
@@ -35,8 +36,9 @@ class Company extends React.Component
                             电      话：0791-82299162<br></br>
                             通讯地址：南昌市-望城新区江铃大道666号<br></br>
                             邮政编码：330100<br></br>
-                            电子邮件：3109599@qq.com、isuzu.zhaopin@jiangxi-isuzu.cn<br></br>
-                            公司网址：http://www.jiangxi-isuzu.cn<br></br>
+                            电子邮件：3109599@qq.com, isuzu.zhaopin@jiangxi-isuzu.cn<br></br>
+                            公司网址：
+                            <Card.Link href="#" className="p-1">http://www.jiangxi-isuzu.cn</Card.Link><br></br>
                         </Card.Text>
                     {/* <small className="text-muted">Last updated 3 mins ago</small> */}
                     </Card.Footer>

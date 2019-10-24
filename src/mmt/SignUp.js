@@ -47,9 +47,10 @@ class SignUp extends React.Component
     }
 
     //sign up function
-    signUp = () =>
+    signUp = (e) =>
     {
-        const emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
+        e.preventDefault();
+        const emailFormat = /^([0-9A-Za-z\-_]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
         const passwordFormat = /^[\w_-]{6,16}$/;
 
         let username= $("#username").val();
