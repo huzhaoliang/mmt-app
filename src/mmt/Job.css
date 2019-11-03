@@ -1,0 +1,31 @@
+.job-brief > .hidden-input {
+    width: 20em;
+}
+.job-informations {
+    color: #666666;
+}
+
+.job-informations .company-link {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #666666;
+}
+.job-informations .company-link:hover {
+    color: #ff6700;
+}
+.job-informations .company-jobs:hover {
+    color: #ff6700;
+}
+.job-informations .detail-salary {
+    color: #ff6700;
+    font-size: 1.2em;
+}
+.job-informations button {
+    height: 3.0em;
+    border: 1px solid #ff6700;
+    background-color: #ff6700;
+}
+
+.job-informations .badge {
+    height: 2em;
+}
