@@ -12,7 +12,7 @@ class HorizontalForm extends React.Component {
             if (element.name === "按钮") {
                 return(
                     <Col key={index}>
-                        <Button className="rounded-0"  type={element.type} onClick={element.action} block> 
+                        <Button className="rounded-0" type={element.type} onClick={element.action} block> 
                             {element.message}
                         </Button>
                     </Col>

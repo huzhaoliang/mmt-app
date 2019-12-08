@@ -26,7 +26,7 @@ class Home extends React.Component
                 {name:"城市", type:"text"}, 
                 {name:"公司", type:"text"},
                 {name:"职位", type:"text"},
-                {name:"按钮", type:"submit", message:"搜 索", action:this.searchBox}
+                {name:"按钮", type:"submit", message:"搜 索", action:this.searchJob}
             ]
         };
         return(
