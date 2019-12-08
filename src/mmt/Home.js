@@ -95,10 +95,25 @@ class Home extends React.Component
     //search job
     searchJob = () =>
     {
+        let id = null;
+        let position = null;
+        let company = null;
+        let city = null;
+
         $.ajax({
             async : false,
             type: 'GET',
-            url: 'http://localhost:8080/api/searchJobs'
+            url: 'http://localhost:8080/api/jobs/'+"",
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+                success: (data) =>
+                        {
+                            
+                        },
+                error: (data) =>
+                        {   
+                            console.log("Fail to search jobs!");
+                        }
         });
     }
 
@@ -147,7 +162,7 @@ function JobCard(props) {
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>
-                        <Card.Link href="/job/job=123">{props.hotJobs[0].name}</Card.Link>
+                        <Card.Link href="/jobs/id=123">{props.hotJobs[0].name}</Card.Link>
                     </Card.Title>
                     <Card.Text>
                         <strong>
