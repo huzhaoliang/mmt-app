@@ -95,6 +95,7 @@ class Home extends React.Component
     //search job
     searchJob = () =>
     {
+        alert("jobs")
         let id = null;
         let position = null;
         let company = null;
@@ -103,7 +104,7 @@ class Home extends React.Component
         $.ajax({
             async : false,
             type: 'GET',
-            url: 'http://localhost:8080/api/jobs/'+"",
+            url: 'http://localhost:8080/api/jobs?id='+id+"&position="+position+"&company="+company+"&city="+city,
             dataType: 'json',
             contentType: 'application/json;charset=utf-8',
                 success: (data) =>
