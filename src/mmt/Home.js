@@ -7,7 +7,6 @@ import HorizontalForm from './HorizontalForm.js'
 
 class Home extends React.Component
 {
- 
     constructor(props)
     {
         super(props);
@@ -148,7 +147,7 @@ function JobCard(props) {
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>
-                        <Card.Link href="#">{props.hotJobs[0].name}</Card.Link>
+                        <Card.Link href="/job/job=123">{props.hotJobs[0].name}</Card.Link>
                     </Card.Title>
                     <Card.Text>
                         <strong>
@@ -236,12 +235,14 @@ function JobCard(props) {
     );
 }
 
+// # region
+// this is for job list
 // function JobTable() {
 //     return(
 //         <Table borderless className="my-0">
 //             <tbody>
 //                 {getTableRow()}
-//                 {/* $.each(this.state.common_job, ()=>{console.log(this.state.common_job[1])})) */}
+//                 {$.each(this.state.common_job, ()=>{console.log(this.state.common_job[1])}))}
 //             </tbody>
 //         </Table>
 //     );
@@ -281,6 +282,6 @@ function JobCard(props) {
 //         </tr>
 //     );
 // }
-
+// # endregion
 
 export default Home

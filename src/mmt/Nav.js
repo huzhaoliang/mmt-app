@@ -4,24 +4,15 @@ import './Nav.css'
 
 class MMTNav extends React.Component
 {
-    // constructor(props) 
-    // {
-    //     super(props);
-    //     this.state = {
-    //         username: sessionStorage.user
-    //     };
-    // }
+    constructor(props) 
+    {
+        super(props);
+        this.state = {
+            username: sessionStorage.user ? sessionStorage.user : "游客"
+        };
+    }
     render()
     {
-        let username = "游客";
-        if (sessionStorage.user){
-            username = sessionStorage.user;
-        }
-        // if (!this.state.username){
-        //     this.setState({
-        //         username: "游客"
-        //     })
-        // }
         return (
             <Navbar bg="dark" expand="sm" variant="dark">
                 <Container>
@@ -32,9 +23,9 @@ class MMTNav extends React.Component
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav>
                             <Nav.Link href="/">首页</Nav.Link>
-                            <Nav.Link href="/job">职位搜索</Nav.Link>
+                            {/* <Nav.Link href="/job">职位搜索</Nav.Link> */}
                         </Nav>
-                        <CreateNavDropdown user={username}/>
+                        <CreateNavDropdown user={this.state.username}/>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

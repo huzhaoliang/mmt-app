@@ -22,7 +22,7 @@ function PageController() {
                 <Route path="/signIn" children={<SignIn />}></Route>
                 <Route path="/signUp" children={<SignUp />}></Route>
                 <Route path="/company" children={<Company />}></Route>
-                <Route path="/job:id" children={<Job />}></Route>
+                <Route path="/job/:id" children={<Job />}></Route>
             </Switch>
         </Router>
     );
