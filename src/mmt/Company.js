@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Card } from 'react-bootstrap';
+import { Link, NavLink } from 'react-router-dom';
 
 import './Company.css'
 
@@ -14,6 +15,8 @@ class Company extends React.Component
     render() {
         return(
             <Container className="my-2">
+                <Link to='/'>返回首页</Link>
+                <NavLink to='/' activeClassName='HELLO'>回到首页</NavLink>
                 <Card>
                     <Card.Img className="p-1" variant="top" src="static/img/lg.gif" />
                     <Card.Body>

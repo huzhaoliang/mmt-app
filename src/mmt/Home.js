@@ -11,12 +11,17 @@ class Home extends React.Component
     constructor(props)
     {
         super(props);
-        this.state = {};
+        this.state = {
+            hot_jobs:[
+                {id:1, name:"加载中...", startSalary:"加载中...", endSalary:"加载中...", exp:"加载中...", edu:"加载中..."},
+                {id:2, name:"加载中...", startSalary:"加载中...", endSalary:"加载中...", exp:"加载中...", edu:"加载中..."},
+                {id:3, name:"加载中...", startSalary:"加载中...", endSalary:"加载中...", exp:"加载中...", edu:"加载中..."}
+            ]
+        };
         
     }
  
     render(){
-        let hot_jobs = this.hotJobs();
         const searchBox = {
             form:[
                 {name:"城市", type:"text"}, 
@@ -31,7 +36,7 @@ class Home extends React.Component
                 <div className="my-4">
                     <HorizontalForm {...searchBox}/>
                 </div>
-                <JobCard hotJobs={hot_jobs} />
+                <JobCard hotJobs={this.state.hot_jobs} />
                 <div className="my-2">
                     <a href="/"><Image className="w-100" src="static/img/index2.gif" alt="First slide" fluid/></a>
                 </div>
@@ -54,8 +59,13 @@ class Home extends React.Component
         );
     }
 
+    componentWillMount=()=>
+    {
+
+    }
     componentDidMount=()=>
     {
+        this.hotJobs();
 
     }
 
@@ -67,23 +77,21 @@ class Home extends React.Component
     //below is for api 
     hotJobs = () =>
     {
-        let hotJobs = "";
         $.ajax({
-                async : false,
+                async : true,
                 type: 'GET',
                 url: 'http://localhost:8080/api/hotJobs',
                 dataType: 'json',
                 contentType: 'application/json;charset=utf-8',
                 success: (data) =>
                         {
-                            hotJobs = data;
+                            this.setState({hot_jobs:data});
                         },
                 error: (data) =>
                         {   
                             console.log("Fail to get hot jobs!");
                         }
         });
-        return hotJobs;
     }
     //search job
     searchJob = () =>
@@ -140,18 +148,18 @@ function JobCard(props) {
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>
-                        <Card.Link href="#">{props.hotJobs[0][1]}</Card.Link>
+                        <Card.Link href="#">{props.hotJobs[0].name}</Card.Link>
                     </Card.Title>
                     <Card.Text>
                         <strong>
-                            <span className="salary">{props.hotJobs[0][4]}-{props.hotJobs[0][5]}</span>
+                            <span className="salary">{props.hotJobs[0].startSalary}-{props.hotJobs[0].endSalary}</span>
                             <span>&nbsp;&nbsp;</span>
                         </strong>
                             <span>经验</span>
-                            <span>{props.hotJobs[0][2]}</span>
+                            <span>{props.hotJobs[0].exp}</span>
                             <span>年</span>
                             <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                            <span>{props.hotJobs[0][3]}</span>
+                            <span>{props.hotJobs[0].edu}</span>
                         {/* <div className="mt-1">
                             <Badge variant="success" className="mr-1">五险一金</Badge>
                             <Badge variant="success" className="mr-1">加班补助</Badge>
@@ -170,18 +178,18 @@ function JobCard(props) {
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>
-                        <Card.Link href="#">{props.hotJobs[1][1]}</Card.Link>
+                        <Card.Link href="#">{props.hotJobs[1].name}</Card.Link>
                     </Card.Title>
                     <Card.Text>
                         <strong>
-                            <span className="salary">{props.hotJobs[1][4]}-{props.hotJobs[1][5]}</span>
+                            <span className="salary">{props.hotJobs[1].startSalary}-{props.hotJobs[1].endSalary}</span>
                             <span>&nbsp;&nbsp;</span>
                         </strong>
                             <span>经验</span>
-                            <span>{props.hotJobs[1][2]}</span>
+                            <span>{props.hotJobs[1].exp}</span>
                             <span>年</span>
                             <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                            <span>{props.hotJobs[1][3]}</span>
+                            <span>{props.hotJobs[1].edu}</span>
                         {/* <div className="mt-1">
                             <Badge variant="success" className="mr-1">五险一金</Badge>
                             <Badge variant="success" className="mr-1">加班补助</Badge>
@@ -200,18 +208,18 @@ function JobCard(props) {
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>
-                        <Card.Link href="#">{props.hotJobs[2][1]}</Card.Link>
+                        <Card.Link href="#">{props.hotJobs[2].name}</Card.Link>
                     </Card.Title>
                     <Card.Text>
                         <strong>
-                            <span className="salary">{props.hotJobs[2][4]}-{props.hotJobs[2][5]}</span>
+                            <span className="salary">{props.hotJobs[2].startSalary}-{props.hotJobs[2].endSalary}</span>
                             <span>&nbsp;&nbsp;</span>
                         </strong>
                             <span>经验</span>
-                            <span>{props.hotJobs[2][2]}</span>
+                            <span>{props.hotJobs[2].exp}</span>
                             <span>年</span>
                             <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                            <span>{props.hotJobs[2][3]}</span>
+                            <span>{props.hotJobs[2].edu}</span>
                         {/* <div className="mt-1">
                             <Badge variant="success" className="mr-1">五险一金</Badge>
                             <Badge variant="success" className="mr-1">加班补助</Badge>

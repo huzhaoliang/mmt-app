@@ -18,11 +18,11 @@ function PageController() {
     return(
         <Router>
             <Switch>
-                <Route exact path="/" component={Home}></Route>
-                <Route path="/signIn" component={SignIn}></Route>
-                <Route path="/signUp" component={SignUp}></Route>
-                <Route path="/company" component={Company}></Route>
-                <Route path="/job" component={Job}></Route>
+                <Route exact path="/" children={<Home />}></Route>
+                <Route path="/signIn" children={<SignIn />}></Route>
+                <Route path="/signUp" children={<SignUp />}></Route>
+                <Route path="/company" children={<Company />}></Route>
+                <Route path="/job:id" children={<Job />}></Route>
             </Switch>
         </Router>
     );

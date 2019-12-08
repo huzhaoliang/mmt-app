@@ -1,17 +1,24 @@
 import React from 'react';
+import { useParams, useLocation } from "react-dom";
 import { Container, Row, Col, Badge, Button } from 'react-bootstrap';
 
 import './Job.css'
 
+
 class Job extends React.Component
 {
     render() {
+        // let id = useParams();
+        // console.log(id);
+        let url = window.location.href;
+        console.log(url);
         return(
             <Container className="job-informations mt-1">
                 <Row>
                     <Col sm="8">
                         <div className="job-title mt-5 mb-3">
                             <h2 title="模具设计师">模具设计师</h2>
+                            {/* <h2>{id}</h2> */}
                         </div>
                         <div className="job-company mb-4">
                             <a href='/' target="_blank" title="江西五十铃" className="company-link mr-4"><span>江西五十铃汽车股份有限公司</span></a>
@@ -35,10 +42,10 @@ class Job extends React.Component
                         </div>
                     </Col>
                     <Col sm="4">
-                        <div className="job-salary my-5 text-center">
-                            <span className="detail-salary mr-4"><strong>8000-10000/月</strong></span>
-                            <span className="mr-4"></span>
-                            <span className="mr-4">收藏</span>
+                        <div className="job-salary my-5">
+                            <span className="detail-salary text-left mr-5"><strong>8000-10000/月</strong></span>
+                            <span className="mr-5"></span>
+                            <span className="text-right mr-5">收藏</span>
                         </div>
                         <div className="mt-5">
                             <Button className="rounded-0" type="button" block>申请职位</Button>
