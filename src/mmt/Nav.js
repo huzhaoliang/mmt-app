@@ -11,6 +11,12 @@ class MMTNav extends React.Component
             username: sessionStorage.user ? sessionStorage.user : "游客"
         };
     }
+
+    logout = () => {
+        sessionStorage.clear();
+        this.setState({username: "游客"});
+    }
+
     render()
     {
         return (
@@ -25,7 +31,9 @@ class MMTNav extends React.Component
                             <Nav.Link href="/">首页</Nav.Link>
                             {/* <Nav.Link href="/job">职位搜索</Nav.Link> */}
                         </Nav>
-                        <CreateNavDropdown user={this.state.username}/>
+                        {/* 以下2种关于action的写法是一样的 */}
+                        {/* <CreateNavDropdown user={this.state.username} action={this.logout}/> */}
+                        <CreateNavDropdown user={this.state.username} action={()=>this.logout()}/>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -40,7 +48,7 @@ function CreateNavDropdown(props){
                 <NavDropdown className="dropdown-menu-left" title={props.user} id="basic-nav-dropdown">
                     <NavDropdown.Item href="#">个人中心</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#">退出</NavDropdown.Item>
+                    <NavDropdown.Item onClick={props.action}>退出</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
         );
