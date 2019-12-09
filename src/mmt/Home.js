@@ -11,10 +11,10 @@ class Home extends React.Component
     {
         super(props);
         this.state = {
-            hot_jobs:[
-                {id:1, name:"加载中...", startSalary:"加载中...", endSalary:"加载中...", exp:"加载中...", edu:"加载中..."},
-                {id:2, name:"加载中...", startSalary:"加载中...", endSalary:"加载中...", exp:"加载中...", edu:"加载中..."},
-                {id:3, name:"加载中...", startSalary:"加载中...", endSalary:"加载中...", exp:"加载中...", edu:"加载中..."}
+            hotJobs:[
+                {id:1, name:"加载中...", startSalary:"...", endSalary:"...", exp:"...", edu:"..."},
+                {id:2, name:"加载中...", startSalary:"...", endSalary:"...", exp:"...", edu:"..."},
+                {id:3, name:"加载中...", startSalary:"...", endSalary:"...", exp:"...", edu:"..."}
             ]
         };
         
@@ -35,7 +35,7 @@ class Home extends React.Component
                 <div className="my-4">
                     <HorizontalForm {...searchBox}/>
                 </div>
-                <JobCard hotJobs={this.state.hot_jobs} />
+                <JobCard hotJobs={this.state.hotJobs} />
                 <div className="my-2">
                     <a href="/"><Image className="w-100" src="static/img/index2.gif" alt="First slide" fluid/></a>
                 </div>
@@ -64,7 +64,7 @@ class Home extends React.Component
     }
     componentDidMount=()=>
     {
-        this.hotJobs();
+        this.filterJob();
 
     }
 
@@ -74,7 +74,7 @@ class Home extends React.Component
     }
 
     //below is for api 
-    hotJobs = () =>
+    filterJob = () =>
     {
         $.ajax({
                 async : true,
@@ -84,7 +84,7 @@ class Home extends React.Component
                 contentType: 'application/json;charset=utf-8',
                 success: (data) =>
                         {
-                            this.setState({hot_jobs:data});
+                            this.setState({hotJobs:data});
                         },
                 error: (data) =>
                         {   
@@ -155,15 +155,16 @@ function SingleCarousel() {
 }
 
 function JobCard(props) {
+    
     return(
         <CardDeck>
             <Card>
-                <Card.Link href="#" className="p-1">
+                <Card.Link href={"/job/id="+props.hotJobs[0].id} className="p-1">
                     <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>
-                        <Card.Link href="/jobs/id=123">{props.hotJobs[0].name}</Card.Link>
+                        <Card.Link href={"/job/id="+props.hotJobs[0].id}>{props.hotJobs[0].name}</Card.Link>
                     </Card.Title>
                     <Card.Text>
                         <strong>
@@ -184,16 +185,16 @@ function JobCard(props) {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <Card.Link href="#" className="text-muted">查看详情...</Card.Link>
+                    <Card.Link href={"/job/id="+props.hotJobs[0].id} className="text-muted">查看详情...</Card.Link>
                 </Card.Footer>
             </Card>
             <Card>
-                <Card.Link href="#" className="p-1">
+                <Card.Link href={"/job/id="+props.hotJobs[1].id} className="p-1">
                     <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>
-                        <Card.Link href="#">{props.hotJobs[1].name}</Card.Link>
+                        <Card.Link href={"/job/id="+props.hotJobs[1].id}>{props.hotJobs[1].name}</Card.Link>
                     </Card.Title>
                     <Card.Text>
                         <strong>
@@ -214,16 +215,16 @@ function JobCard(props) {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <Card.Link href="#" className="text-muted">查看详情...</Card.Link>
+                    <Card.Link href={"/job/id="+props.hotJobs[1].id} className="text-muted">查看详情...</Card.Link>
                 </Card.Footer>
             </Card>
             <Card>
-                <Card.Link href="#" className="p-1">
+                <Card.Link href={"/job/id="+props.hotJobs[2].id} className="p-1">
                     <Card.Img variant="top" src="static/img/index3.jpg" />
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>
-                        <Card.Link href="#">{props.hotJobs[2].name}</Card.Link>
+                        <Card.Link href={"/job/id="+props.hotJobs[2].id}>{props.hotJobs[2].name}</Card.Link>
                     </Card.Title>
                     <Card.Text>
                         <strong>
@@ -244,7 +245,7 @@ function JobCard(props) {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <Card.Link href="#" className="text-muted">查看详情...</Card.Link>
+                    <Card.Link href={"/job/id="+props.hotJobs[2].id} className="text-muted">查看详情...</Card.Link>
                 </Card.Footer>
             </Card>
         </CardDeck>

@@ -1,5 +1,5 @@
+import $ from 'jquery';
 import React from 'react';
-import { useParams, useLocation } from "react-dom";
 import { Container, Row, Col, Badge, Button } from 'react-bootstrap';
 
 import './Job.css'
@@ -7,11 +7,41 @@ import './Job.css'
 
 class Job extends React.Component
 {
+    constructor(props){
+        super(props);
+        this.state={
+            city: null, 
+            company: null, 
+            position: null,
+            id: window.location.href.split("=")[1]
+        };
+    }
+
+    componentDidMount = () => {
+        this.filterJob();
+    }
+
+    //search job
+    filterJob = () =>
+    {
+        $.ajax({
+            async : true,
+            type: 'GET',
+            url: 'http://localhost:8080/api/jobs?id='+this.state.id+"&position="+this.state.position+"&company="+this.state.company+"&city="+this.state.city,
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+                success: (data) =>
+                        {
+                            console.log(data);
+                        },
+                error: (data) =>
+                        {   
+                            console.log("Fail to search jobs!");
+                        }
+        });
+    }
+
     render() {
-        // let id = useParams();
-        // console.log(id);
-        let url = window.location.href;
-        console.log(url);
         return(
             <Container className="job-informations mt-1">
                 <Row>
